@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Payment</title>
+  <link rel="stylesheet" href="payment.css" />
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Choose Payment Method</h2>
+    <p class="subtext">All Indian payment options supported</p>
+
+    <button id="rzp-button">Pay ₹149 Now</button>
+  </div>
+
+  <!-- Razorpay script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    const options = {
+      key: "rzp_test_w4QKjAXDijkAjk", // Replace with your Test Key ID
+      amount: 900, // Amount in paisa (₹9.00)
+      currency: "INR",
+      name: "habit verse",
+      description: "Premium Subscription",
+      image: "https://yourapp.com/logo.png",
+      handler: function (response) {
+        alert("✅ Payment successful!\nPayment ID: " + response.razorpay_payment_id);
+        window.location.href = "/index.html";
+      },
+      prefill: {
+        name: "Pratik Ranjan",
+        email: "pratik@example.com",
+        contact: "9999999999"
+      },
+      theme: {
+        color: "#00b894"
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    document.getElementById("rzp-button").onclick = function (e) {
+      rzp.open();
+      e.preventDefault();
+    };
+  </script>
+</body>
+</html>

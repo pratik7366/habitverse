@@ -1,0 +1,21 @@
+<!-- task.html -->
+<div class="dsa-card">
+  <div class="dsa-header">
+    <span class="dsa-title">DSA</span>
+    <span id="dsaProgressText" class="dsa-progress-text">0% completed</span>
+  </div>
+
+  <div class="dsa-subtitle">Set your goal and track your progress</div>
+
+  <div class="dsa-goal-inputs">
+    <button onclick="setGoal()">🎯 Set Your Goal</button>
+    <button onclick="updateCompleted()">✅ Questions Done</button>
+  </div>
+
+  <!-- Hidden initially -->
+  <div id="dsaProgressBar" class="dsa-progress-bar" style="display: none;">
+    <div id="dsaProgressFill" class="dsa-progress-fill" style="width: 0%;"></div>
+  </div>
+
+  <div id="dsaMessage" class="dsa-message"></div>
+</div>

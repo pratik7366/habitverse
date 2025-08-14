@@ -1,0 +1,305 @@
+/* Container */
+.my-activities-container {
+  background: #1c1c1e;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: auto;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  width: 955px;
+  height: 352px;
+}
+
+/* Header */
+.my-activities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.my-activities-header span {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.my-activities-header button {
+  background: none;
+  border: none;
+  color: #ff521b;
+  font-weight: bold;
+  cursor: pointer;
+}
+#planned-count-btn {
+  border: 1px solid #ff521b; /* orange border */
+  border-radius: 8px;
+  padding: 2px 8px;
+  background-color: transparent;
+  color: #ff521b;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#planned-count-btn:hover {
+  background-color: rgba(255, 82, 27, 0.1);
+}
+
+/* Filters */
+.activity-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter {
+  background: #2a2a2d;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 16px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter.active {
+  background: #ff521b;
+  color: white;
+}
+
+/* Cards layout */
+.activity-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Activity card */
+/* Activity card hover with theme color fill */
+.activity-card {
+  background: #2a2a2d;
+  border-radius: 15px;
+  padding: 15px;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: scale(1.03);
+  background: #ff521b; /* theme orange */
+  color: white;
+}
+
+.activity-card:hover h4,
+.activity-card:hover p,
+.activity-card:hover .activity-arrow,
+.activity-card:hover .timer-display {
+  color: white; /* ensure text/icons stay visible */
+}
+
+
+.activity-card h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.activity-card p {
+  margin: 0;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.activity-users {
+  display: flex;
+}
+
+.activity-users img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #1c1c1e;
+  margin-left: -8px;
+}
+
+.activity-users img:first-child {
+  margin-left: 0;
+}
+
+.activity-arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 16px;
+  transform: rotate(315deg);
+  cursor: pointer;
+}
+
+
+
+.active-card p,
+.active-card h4 {
+  color: white;
+}
+
+/* Add Activity card */
+.add-activity {
+  border: 2px solid #ff521b;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: transparent;
+  cursor: pointer;
+  
+}
+
+.add-activity span {
+  font-size: 24px;
+  display: block;
+  color: #eefdff;
+}
+
+.add-activity p {
+  color: #ff521b;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* Timer */
+.timer-display {
+  font-size: 14px;
+  color: #ffb599;
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+/* Modal base */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.modal-content {
+  background: #2a2a2d;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  color: white;
+  position: relative;
+}
+
+.modal-content h3,
+.modal-content h4 {
+  margin-top: 0;
+}
+
+.close-modal,
+.close-card-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  background: #1c1c1e;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.modal-content button {
+  background: #ff521b;
+  border: none;
+  padding: 8px 14px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal-content button:hover {
+  background: #e14818;
+}
+
+/* Enlarged card modal */
+.enlarged-card {
+  width: 500px;
+}
+
+.popup-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.friend-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.friend-controls button {
+  background: #555;
+}
+
+.friend-controls button:hover {
+  background: #777;
+}
+
+/* Planned activities list in modal */
+#planned-activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#planned-activities-list .activity-card {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  cursor: default;
+  border: none; /* remove dashed box inside modal */
+  background: #2a2a2d;
+}
+
+#planned-activities-list .activity-card .activity-arrow {
+  display: none;
+}
+
+/* Add activity inside modal */
+#planned-activities-list .add-activity {
+  border: 2px dashed #ff521b;
+  background: transparent;
+  padding: 15px;
+  height: auto;
+}

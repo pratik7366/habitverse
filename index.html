@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Habit Verse</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="side bar/sidebar.css">
+  <link rel="stylesheet" href="sleep track/sleep.css">
+  <link rel="stylesheet" href="task/task.css">
+  <link rel="stylesheet" href="physical activity/styles.css">
+   <link rel="stylesheet" href="my activity/activities.css">
+   <link rel="stylesheet" href="calender/calender.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="greeting">
+      <div class="greeting-top">
+        <div class="initial">P</div>
+        <div class="user-name">Hello Pratik </div>
+      </div>
+      <div class="challenge-line">
+        Ready for today's challenge Pratik
+      </div>
+    </div>
+
+    <div class="right-buttons">
+      <div class="search-box">
+        <input type="text" placeholder="Search " />
+      </div>
+     <button class="premium-button" onclick="window.location.href='/premium/plan.html'">Premium</button>
+
+    </div>
+  </div>
+
+  <div class="activity-sections">
+
+  
+  <div id="sidebar-container"></div>
+  <div class ="main-column">
+    <div id="physical-container"></div>
+    <div id="activities-placeholder"></div>
+    </div>
+    <div id="left-cards" class="left-cards"></div> <!-- Sleep and DSA cards will be loaded here -->
+ 
+  <script>
+    function updateTopBarGreeting() {
+  const userName = localStorage.getItem("userName") || "Guest";
+  const firstLetter = userName.charAt(0).toUpperCase();
+
+  // Update the circle initial
+  const topBarInitial = document.querySelector(".greeting-top .initial");
+  topBarInitial.textContent = firstLetter;
+
+  // Update greeting name
+  const topBarName = document.querySelector(".greeting-top .user-name");
+  if(topBarName) topBarName.textContent = `Hello ${userName}`;
+
+  // Update challenge line
+  const challengeLine = document.querySelector(".challenge-line");
+  if(challengeLine) challengeLine.textContent = `Ready for today's challenge ${userName}`;
+}
+
+// Call it once the page loads
+updateTopBarGreeting();
+
+    // Load sidebar
+    fetch("side bar/sidebar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("sidebar-container").innerHTML += data;
+          const script = document.createElement("script");
+      script.src = "side bar/sidebar.js";  
+        script.onload = () => {
+        console.log("sidebar.js loaded successfully");
+      };
+      document.body.appendChild(script);
+      });
+
+    // Load Physical Activity
+    fetch('physical activity/activity.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('physical-container').innerHTML += data;
+        // Now dynamically load the physical activity script
+         const script = document.createElement("script");
+      script.src = "physical activity/Growth activity.js";  
+        script.onload = () => {
+        console.log("Growth activity.js loaded successfully");
+      };
+      document.body.appendChild(script);
+      });
+// Load Activities
+       fetch("my activity/activities.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("activities-placeholder").innerHTML = html;
+    const script = document.createElement("script");
+      script.src = "my activity/activitiess.js";  
+        script.onload = () => {
+        console.log(" activitiess.js loaded successfully");
+      };
+      document.body.appendChild(script);
+      });
+    
+    // Load Sleep and DSA into left side
+   fetch("sleep track/sleep.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("left-cards").innerHTML += data;
+     // Now dynamically load the sleep.js script
+      const script = document.createElement("script");
+      script.src = "sleep track/sleep.js";  
+        script.onload = () => {
+        console.log("sleep.js loaded successfully");
+      };
+      document.body.appendChild(script);
+    });
+    // Load DSA card
+    fetch("task/index.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("left-cards").innerHTML += data;
+// Now dynamically load the task.js script
+      const script = document.createElement("script");
+      script.src = "task/task.js";
+      script.onload = () => {
+        console.log("task.js loaded successfully");
+      };
+      document.body.appendChild(script);
+    });
+
+    // Load Calendar 
+fetch("calender/calender.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("left-cards").innerHTML += data;
+
+    const script = document.createElement("script");
+    script.src = "calender/calender.js";
+    script.onload = () => {
+      console.log("calender.js loaded successfully");
+    };
+    document.body.appendChild(script);
+  });
+  </script>
+</div>
+</body>
+</html>
